@@ -1,0 +1,48 @@
+Person:
+  - name:
+      first: Bob
+      middle: J
+      last: Knob
+    details:
+      - type: phone
+        slug: home
+        value: (801) 321-4567
+        isDefault: true
+      - type: email
+        slug: home
+        value: abc@example.com
+        isDefault: true
+      - type: email
+        slug: work
+        value: abc@mywork.com
+  - name:
+      first: karen
+      middle: Z
+      last: McKlaren
+    details:
+      - type: phone
+        slug: work
+        value: (801) 888-4567
+        isDefault: true
+      - type: phone
+        slug: other
+        value: (909) 777-6543
+        isDefault: false
+        
+Company:
+  - name:
+      first: Bobs Burgers
+      last: LLC
+    details:
+      - type: phone
+        slug: info
+        value: (800) 202-2020
+        isDefault: true
+      - type: phone
+        slug: main
+        value: (800) 202-2121
+        isDefault: true
+      - type: email
+        slug: sales
+        value: bob@burgers.com
+        isDefault: true

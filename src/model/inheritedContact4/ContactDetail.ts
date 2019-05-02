@@ -1,5 +1,5 @@
 import { Entity, Column, ManyToOne, JoinColumn } from "typeorm";
-import Contact from "./Contact";
+import Person from "./Person";
 
 @Entity({
     name: 'contact_detail'
@@ -34,8 +34,8 @@ export default class ContactDetail {
      * be type Contact because it should be Person or Company
      */
     @ManyToOne(
-        () => Contact,
-        (contact: Contact) => contact.details,
+        () => Person,
+        (contact: Person) => contact.details,
         {
             primary: true
         }
@@ -43,6 +43,6 @@ export default class ContactDetail {
     @JoinColumn({
         name: 'contact_id'
     })
-    public contact: Contact;
+    public contact: Person;
 
 }

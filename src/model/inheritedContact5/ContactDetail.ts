@@ -1,5 +1,6 @@
 import { Entity, Column, ManyToOne, JoinColumn } from "typeorm";
-import Contact from "./Contact";
+import Person from "./Person";
+import Company from "./Company";
 
 @Entity({
     name: 'contact_detail'
@@ -28,14 +29,16 @@ export default class ContactDetail {
     public value: string;
 
     /**
-     * Basically this is the issue I was looking for. 
-     * There is no way to reference the type of the One side
-     * when it is abstract and extended. This basically can't 
-     * be type Contact because it should be Person or Company
+     * Basically this is the issue I was looking for. Unfortunately the 
+     * `type` parameter is undefined and there is still no way to get the 
+     * type which extends the Contact. 
      */
     @ManyToOne(
-        () => Contact,
-        (contact: Contact) => contact.details,
+        (type) => {
+            console.log('The type is ' + type);
+            return (type === 'person') ? Person : Company;
+        },
+        (contact: Person | Company) => contact.details,
         {
             primary: true
         }
@@ -43,6 +46,6 @@ export default class ContactDetail {
     @JoinColumn({
         name: 'contact_id'
     })
-    public contact: Contact;
+    public contact: Person | Company;
 
 }

@@ -10,7 +10,11 @@
     "start": "NODE_PATH=src/ NODE_ENV=dev ts-node --files -P tsconfig.json src",
     "start:simple": "RUN_MODE=simple npm start",
     "start:inheritedDetails": "RUN_MODE=inheritedDetails npm start",
-    "start:inheritedContact": "RUN_MODE=inheritedContact npm start"
+    "start:inheritedContact": "RUN_MODE=inheritedContact npm start",
+    "start:inheritedContact2": "RUN_MODE=inheritedContact2 npm start",
+    "start:inheritedContact3": "RUN_MODE=inheritedContact3 npm start",
+    "start:inheritedContact4": "RUN_MODE=inheritedContact4 npm start",
+    "start:inheritedContact5": "RUN_MODE=inheritedContact5 npm start"
   },
   "dependencies": {
     "lodash": "^4.17.11",

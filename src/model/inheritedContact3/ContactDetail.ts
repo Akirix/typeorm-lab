@@ -1,5 +1,6 @@
 import { Entity, Column, ManyToOne, JoinColumn } from "typeorm";
 import Contact from "./Contact";
+import Person from "./Person";
 
 @Entity({
     name: 'contact_detail'
@@ -30,12 +31,13 @@ export default class ContactDetail {
     /**
      * Basically this is the issue I was looking for. 
      * There is no way to reference the type of the One side
-     * when it is abstract and extended. This basically can't 
-     * be type Contact because it should be Person or Company
+     * when it is abstract and extended. This time around 
+     * the type is statically set to person so it can try to
+     * at tleast load people and get some kind of valid reference. 
      */
     @ManyToOne(
-        () => Contact,
-        (contact: Contact) => contact.details,
+        () => Person,
+        (contact: Person) => contact.details,
         {
             primary: true
         }
@@ -43,6 +45,6 @@ export default class ContactDetail {
     @JoinColumn({
         name: 'contact_id'
     })
-    public contact: Contact;
+    public contact: Person;
 
 }
