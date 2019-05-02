@@ -1,7 +1,7 @@
 {
-  "name": "typescript-hello-world",
+  "name": "yypeorm-lab",
   "version": "1.0.0",
-  "description": "Typescript Hello World",
+  "description": "Testing different relationships with Typeorm",
   "main": "dist/index.js",
   "types": "src/types/index.d.ts",
   "author": "MMSG",
