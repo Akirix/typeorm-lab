@@ -37,7 +37,7 @@ A test where the details each have an inherited class and a specific attribute o
 npm run start:inheritedDetails
 ```
 
-### Inherited Details
+### Inherited Contact
 
 A test where each contact is a specific type extended from the abstract contact. 
 
