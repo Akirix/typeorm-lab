@@ -13,7 +13,8 @@ Contact:
         isDefault: true
       - slug: work
         value: abc@mywork.com
-  - name:
+  - type: person
+    name:
       first: karen
       last: Mclaren
     phones:
@@ -23,3 +24,18 @@ Contact:
       - slug: other
         value: (909) 777-6543
         isDefault: false
+  - type: company
+    name:
+      first: Bobs Burgers
+      last: LLC
+    phones:
+      - slug: info
+        value: (800) 202-2020
+        isDefault: true
+      - slug: main
+        value: (800) 202-2121
+        isDefault: true
+    emails:
+      - slug: sales
+        value: bob@burgers.com
+        isDefault: true

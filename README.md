@@ -26,7 +26,7 @@ password: postgres
 A simple one to many. 
 
 ```
-npm start:simple
+npm run start:simple
 ```
 
 ### Inherited Details
@@ -34,5 +34,13 @@ npm start:simple
 A test where the details each have an inherited class and a specific attribute on the contact. 
 
 ```
-npm start:inheritedDocs
+npm run start:inheritedDetails
+```
+
+### Inherited Details
+
+A test where each contact is a specific type extended from the abstract contact. 
+
+```
+npm run start:inheritedContact
 ```

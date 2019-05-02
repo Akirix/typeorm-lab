@@ -9,7 +9,8 @@
   "scripts": {
     "start": "NODE_PATH=src/ NODE_ENV=dev ts-node --files -P tsconfig.json src",
     "start:simple": "RUN_MODE=simple npm start",
-    "start:inheritedDetails": "RUN_MODE=inheritedDetails npm start"
+    "start:inheritedDetails": "RUN_MODE=inheritedDetails npm start",
+    "start:inheritedContact": "RUN_MODE=inheritedContact npm start"
   },
   "dependencies": {
     "lodash": "^4.17.11",

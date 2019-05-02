@@ -1,4 +1,4 @@
-Contact:
+Person:
   - name:
       first: Bob
       middle: J
@@ -15,8 +15,7 @@ Contact:
       - type: email
         slug: work
         value: abc@mywork.com
-  - type: person
-    name:
+  - name:
       first: karen
       middle: Z
       last: McKlaren
@@ -29,8 +28,9 @@ Contact:
         slug: other
         value: (909) 777-6543
         isDefault: false
-  - type: company
-    name:
+
+Company:
+  - name:
       first: Bobs Burgers
       last: LLC
     details:
