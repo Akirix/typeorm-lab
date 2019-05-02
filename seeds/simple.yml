@@ -1,0 +1,23 @@
+Contact:
+  - name:
+      first: Bob
+      middle: J
+      last: Knob
+    details:
+      - type: phone
+        slug: home
+        value: (801) 321-4567
+        isDefault: true
+      - type: email
+        slug: home
+        value: abc@example.com
+        isDefault: true
+  - name:
+      first: karen
+      middle: Z
+      last: McKlaren
+    details:
+      - type: phone
+        slug: work
+        value: (801) 888-4567
+        isDefault: true
