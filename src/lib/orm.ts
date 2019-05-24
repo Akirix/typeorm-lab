@@ -1,4 +1,6 @@
-import { createConnection, ConnectionOptions, Connection, getRepository, Repository } from "typeorm";
+import { createConnection, ConnectionOptions, Connection, getRepository, Repository, EntityManager } from "typeorm";
+import fs from 'fs';
+import path from 'path';
 
 export function buildOrmConfig(dbConfig, runMode: string): ConnectionOptions {
 
@@ -18,10 +20,10 @@ export function buildOrmConfig(dbConfig, runMode: string): ConnectionOptions {
         logging: dbConfig.logging,
         host: dbConfig.host,
         port: dbConfig.port,
-        schema: dbConfig.schema,
-        database: ( dbType === "postgres" ) ? dbConfig.name : null,
-        username: dbConfig.username,
-        password: dbConfig.password,
+        schema: (dbType === "postgres") ? dbConfig.schema : null,
+        database: ( dbType === "sqljs" ) ? null : dbConfig.name,
+        username: ( dbType === "sqljs" ) ? null : dbConfig.username,
+        password: ( dbType === "sqljs" ) ? null : dbConfig.password,
         logger: this.logger
     };
 }
@@ -42,7 +44,11 @@ export async function getConnection(ormConfig: ConnectionOptions): Promise<Conne
 
 export async function syncOrm(connection: Connection, seeds, dropSchema: boolean = true) {
 
-    await connection.synchronize( dropSchema );
+    try {
+        await connection.synchronize( dropSchema );
+    } catch (error) {
+        console.error(`There was an error syncing the DB`,error);
+    }
 
     if (dropSchema) {
         // console.log(seeds);
@@ -69,4 +75,20 @@ export async function syncOrm(connection: Connection, seeds, dropSchema: boolean
         });
     }
 
+}
+
+export async function loadSqliteFile(dbFile: string) {
+    const dbDir: string = path.dirname(dbFile);
+
+    if (!fs.existsSync(dbDir)) {
+        fs.mkdirSync(dbDir);
+    }
+
+    if (!fs.existsSync(dbFile)) {
+        try {
+            fs.writeFileSync(dbFile,'');
+        } catch (e) {
+            console.error(`There was an error creating the db file: ${dbFile}`,e);
+        }
+    }
 }

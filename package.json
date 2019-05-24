@@ -14,11 +14,13 @@
     "start:inheritedContact2": "RUN_MODE=inheritedContact2 npm start",
     "start:inheritedContact3": "RUN_MODE=inheritedContact3 npm start",
     "start:inheritedContact4": "RUN_MODE=inheritedContact4 npm start",
-    "start:inheritedContact5": "RUN_MODE=inheritedContact5 npm start"
+    "start:inheritedContact5": "RUN_MODE=inheritedContact5 npm start",
+    "start:multiKey": "RUN_MODE=multiKey npm start"
   },
   "dependencies": {
     "lodash": "^4.17.11",
     "pg": "^7.10.0",
+    "sqlite3": "^4.0.8",
     "typeorm": "^0.2.17"
   },
   "devDependencies": {
