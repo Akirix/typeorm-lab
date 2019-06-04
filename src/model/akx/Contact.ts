@@ -87,11 +87,11 @@ export default abstract class Contact {
     /**
      * @inheritdoc
      */
-    // @OneToMany(
-    //     () => Phone,
-    //     ( phone: Phone ) => phone.contact
-    // )
-    // public phones: Phone[];
+    @OneToMany(
+        () => Phone,
+        ( phone: Phone ) => phone.contact
+    )
+    public phones: Phone[];
 
     /**
      * @inheritdoc

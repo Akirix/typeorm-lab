@@ -87,8 +87,7 @@ export default abstract class ContactDetail<T>{
      * @inheritdoc
      */
     @Column({
-        name: 'default',
-        default: false
+        name: 'default'
     })
     public isDefault: boolean;
 
