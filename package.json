@@ -1,5 +1,5 @@
 {
-  "name": "yypeorm-lab",
+  "name": "typeorm-lab",
   "version": "1.0.0",
   "description": "Testing different relationships with Typeorm",
   "main": "dist/index.js",
@@ -8,7 +8,8 @@
   "license": "ISC",
   "scripts": {
     "start": "NODE_PATH=src/ NODE_ENV=dev ts-node --files -P tsconfig.json src",
-    "start:simple": "RUN_MODE=simple npm start",
+    "start:akx": "RUN_MODE=akx npm start",
+    "start:simple": "RUN_MODE=basic npm start",
     "start:inheritedDetails": "RUN_MODE=inheritedDetails npm start",
     "start:inheritedContact": "RUN_MODE=inheritedContact npm start",
     "start:inheritedContact2": "RUN_MODE=inheritedContact2 npm start",
