@@ -2,18 +2,17 @@ import {Entity, ChildEntity, TableInheritance, PrimaryColumn, PrimaryGeneratedCo
 
 @Entity()
 // @TableInheritance({ column: { type: "varchar", name: "type" } })
-export class Content {
+export class Person {
 
     @PrimaryGeneratedColumn('uuid')
     id: string;
 
-    @PrimaryColumn()
+    @Column()
+    name: string;
+
+    @PrimaryColumn({
+        default: 'User'
+    })
     type: string;
-
-    @Column()
-    title: string;
-
-    @Column()
-    description: string;
 
 }

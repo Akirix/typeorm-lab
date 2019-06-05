@@ -1,7 +1,7 @@
 /**
  * @module models
  */
-import { Entity, Column, TableInheritance, Check } from "typeorm";
+import {BaseEntity,Entity,PrimaryColumn, Column, TableInheritance, Check, PrimaryGeneratedColumn} from "typeorm";
 import {ContactTypes} from "./Contact";
 /**
  * Different types of details on a user.
@@ -56,30 +56,29 @@ export enum DetailTypes {
     column: {
         type: "varchar",
         name: "type",
-        primary: true
+        // primary: true
     }
 })
-export default abstract class ContactDetail<T>{
+export default abstract class ContactDetail<T> extends BaseEntity{
 
-    public abstract type: DetailTypes;
+    @PrimaryGeneratedColumn('uuid')
+    public id: string;
 
-    @Column({
-        name: 'contact_type',
-        primary: true
-    })
-    public contact_type: string;
-
-    @Column({
-        name: 'contact_id',
-        primary: true
+    @PrimaryColumn({
+        name: 'contact_id'
     })
     public contact_id: string;
+
+    @PrimaryColumn({
+        name: 'contact_type'
+    })
+    public contact_type: string;
 
     /**
      * @inheritdoc
      */
     @Column({
-        primary: true
+        // primary: true
     })
     public slug: string;
 
@@ -87,7 +86,8 @@ export default abstract class ContactDetail<T>{
      * @inheritdoc
      */
     @Column({
-        name: 'default'
+        name: 'default',
+        default: false
     })
     public isDefault: boolean;
 

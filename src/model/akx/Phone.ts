@@ -4,6 +4,7 @@
 import {ChildEntity, ManyToOne, JoinColumn, Column} from 'typeorm';
 import ContactDetail, { DetailTypes } from "./ContactDetail";
 import Contact, {ContactTypes} from './Contact';
+import Person from './Person';
 
 /**
  * A concrete extension, aka `ChildEntity`, of the abstract [[ContactDetail]]. A fully
@@ -12,7 +13,7 @@ import Contact, {ContactTypes} from './Contact';
 @ChildEntity(DetailTypes.PHONE)
 export default class Phone extends ContactDetail<string> {
 
-    public readonly type: DetailTypes = DetailTypes.PHONE;
+    // public readonly type: DetailTypes = DetailTypes.PHONE;
 
     /**
      * The actual valid phone number value of the phone detail.
@@ -27,8 +28,8 @@ export default class Phone extends ContactDetail<string> {
      * because type requires the two way reference for now.
      */
     @ManyToOne(
-        () => Contact,
-        (contact: Contact) => contact.phones,
+        () => Person,
+        (person: Person) => person.phones,
         {
             primary: true
         }

@@ -12,15 +12,4 @@ import Phone from "./Phone";
 @ChildEntity(ContactTypes.PERSON)
 export default class Person extends Contact {
 
-    public readonly type: ContactTypes = ContactTypes.PERSON;
-
-    @OneToMany(
-        () => Phone,
-        ( phone: Phone ) => phone.contact
-    )
-    public phones: Phone[];
-
-    constructor() {
-        super();
-    }
 }

@@ -1,18 +1,40 @@
-import { Entity, ManyToOne, ChildEntity, TableInheritance, PrimaryGeneratedColumn,JoinColumn, Column } from 'typeorm';
+import {
+    Entity,
+    ManyToOne,
+    ChildEntity,
+    TableInheritance,
+    PrimaryGeneratedColumn,
+    JoinColumn,
+    Column,
+    PrimaryColumn
+} from 'typeorm';
 import { Content } from './Content';
 import { User } from './User';
 
-@ChildEntity('photo')
+// @ChildEntity('photo')
+@Entity( 'content')
 export class Photo extends Content {
 
-    @Column()
+    @PrimaryColumn()
+    type: string='Photo';
+
+    @Column({
+        nullable: true
+    })
     size: string;
 
-    @ManyToOne(type => User, user => user.photos)
+    @ManyToOne(type => User, user => user.photos, {
+            primary: true
+        }
+    )
     @JoinColumn([
         {
-            name: 'user_id',
+            name: 'person_id',
             referencedColumnName: 'id'
+        },
+        {
+            name: 'person_type',
+            referencedColumnName: 'type'
         }
     ])
     user: User;

@@ -1,11 +1,10 @@
 /**
  * @module models
  */
-import { Entity, PrimaryColumn, Column, OneToMany, TableInheritance, Check } from 'typeorm';
+import { BaseEntity, Entity, PrimaryColumn, PrimaryGeneratedColumn, Column, OneToMany, TableInheritance, Check } from 'typeorm';
 import _ from 'lodash';
 import Name from './Name';
 import Phone from "./Phone";
-import Email from "./Email";
 
 /**
  * The different types a contact can be.
@@ -58,20 +57,22 @@ export enum ContactTypes {
     column: {
         type: "varchar",
         name: "type",
-        // default: ContactTypes.PERSON,
-        primary: true
+        // primary: true
     }
 } )
 @Check(`"type" in ('${ContactTypes.PERSON}','${ContactTypes.COMPANY}','${ContactTypes.PARTNER_BANK}')`)
-export default abstract class Contact {
-
-    public abstract type: ContactTypes;
+export default abstract class Contact extends BaseEntity {
 
     /**
      * @inheritdoc
      */
-    @PrimaryColumn()
+    @PrimaryGeneratedColumn('uuid')
     public id: string;
+
+    @PrimaryColumn({
+        default: ContactTypes.PERSON
+    })
+    public type: string;
 
     /**
      * @inheritdoc
@@ -93,9 +94,5 @@ export default abstract class Contact {
     )
     public phones: Phone[];
 
-    /**
-     * @inheritdoc
-     */
-    @OneToMany( () => Email, (email: Email ) => email.contact )
-    public emails: Email[];
+
 }

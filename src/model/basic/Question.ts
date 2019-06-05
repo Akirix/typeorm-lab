@@ -1,10 +1,16 @@
-import { Entity, ChildEntity, TableInheritance, PrimaryGeneratedColumn, Column } from 'typeorm';
+import {Entity, ChildEntity, TableInheritance, PrimaryGeneratedColumn, Column, PrimaryColumn} from 'typeorm';
 import { Content } from './Content';
 
-@ChildEntity()
+// @ChildEntity()
+@Entity( 'content')
 export class Question extends Content {
 
-    @Column()
+    @PrimaryColumn()
+    type: string='Question';
+
+    @Column({
+        nullable: true
+    })
     answersCount: number;
 
 }
